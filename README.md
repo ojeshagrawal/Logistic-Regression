@@ -27,7 +27,7 @@ A garment factory produces **shirts and pants**. The goal is to maximize profit 
 - **Sensitivity Analysis**:
   Derived bounds for profit per shirt: `$8 ≤ c ≤ $16`
 
-
+📄 See: `garment_factory_model.md`
 ---
 
 ### ✅ Q2: Product Mix Optimization – LP Model in R
@@ -58,7 +58,7 @@ A company produces **three products** (Bloom, Amber, Leaf) using **three raw mat
     ```
   - Leaf product not produced in the optimal solution
 
-
+📄 Explanation: `factory_model_explanation.md`
 ---
 
 ### ✅ Q3: Game Theory – Strategic Bidding (Two-Player Zero-Sum Game)
@@ -78,7 +78,7 @@ Two construction companies – **Giant** and **Sky** – are competing for build
 - **Result**:  
   Game value is **0** – a tie in optimal strategy.
 
-
+📄 Explanation: `game_theory_model.md`
 ---
 
 ## 🛠️ Technologies Used
