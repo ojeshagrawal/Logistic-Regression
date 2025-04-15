@@ -1,4 +1,4 @@
-# Logistic-Regression
+# Linear-Programming and Logistic-Regression
 
  
   
