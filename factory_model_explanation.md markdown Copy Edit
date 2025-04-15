@@ -1,0 +1,94 @@
+## factory_model_explanation.md
+
+# 🏭 Product Mix Optimization – Factory Model Explanation (Q2)
+
+This document explains the linear programming model developed for optimizing the product mix of three textile products—**Bloom**, **Amber**, and **Leaf**—using **Cotton**, **Wool**, and **Nylon** as raw materials.
+
+---
+
+## 📌 Problem Statement
+
+A company produces three final products:
+- Bloom
+- Amber
+- Leaf
+
+Each product is composed of three raw materials:
+- Cotton
+- Wool
+- Nylon
+
+The goal is to **maximize total profit**, considering:
+- Cost and revenue of raw materials
+- Proportion constraints
+- Product demand limitations
+
+---
+
+## 🧮 Variables
+
+Let `xij` represent the quantity (in tons) of material `i` used in product `j`, where:
+
+- `i` ∈ {1: Cotton, 2: Wool, 3: Nylon}
+- `j` ∈ {1: Bloom, 2: Amber, 3: Leaf}
+
+Decision variables:
+- `x11`, `x12`, `x13`: Cotton in Bloom, Amber, Leaf
+- `x21`, `x22`, `x23`: Wool in Bloom, Amber, Leaf
+- `x31`, `x32`, `x33`: Nylon in Bloom, Amber, Leaf
+
+## 🎯 Objective Function
+
+**Profit = Sales Price – Production Cost – Purchase Price**
+
+Simplified final objective function:
+Maximize: 15x11 + 10x12 + 25x13 + 11x21 + 6x22 + 21x23 + 15x31 + 10x32 + 25x33
+
+## 📏 Constraints
+
+### 1. **Demand Constraints**
+x11 + x21 + x31 ≤ 4200 (Bloom) and
+x12 + x22 + x32 ≤ 3200 (Amber) and
+x13 + x23 + x33 ≤ 3500 (Leaf)
+
+### 2. **Proportion Constraints**
+
+#### Cotton
+- Bloom: `2x11 ≥ x11 + x21 + x31`
+- Amber: `0.4x12 − 0.6x22 − 0.6x23 ≥ 0`
+- Leaf: `0.6x13 − 0.4x23 − 0.4x33 ≥ 0`
+
+#### Wool
+- Bloom: `0.6x21 − 0.4x11 − 0.4x31 ≥ 0`
+- Amber: `0.6x22 − 0.4x12 − 0.4x32 ≥ 0`
+- Leaf: `0.7x23 − 0.3x13 − 0.3x33 ≥ 0`
+
+### 3. **Non-Negativity and Integer Constraints**
+All `xij ≥ 0` and are integers.
+
+---
+
+## 💻 Model Implementation in R
+
+Using `lpSolveAPI` in `ojesh-code.R`:
+- Defined 9 decision variables and 9 constraints.
+- Objective and constraint coefficients set using `set.objfn()` and `set.row()`.
+- Constraints defined with `set.rhs()` and `set.constr.type()`.
+- Model solved using `solve()`.
+
+## ✅ Optimal Solution
+
+- Maximum Profit: **$83,160**
+- Production Plan:
+x11 = 2520 x21 = 1920 x31 = 0 x12 = 1680 x22 = 1280 x32 = 0 x13 = 0 x23 = 0 x33 = 0
+
+
+- **Only Bloom and Amber** are produced; Leaf is excluded from the optimal plan.
+
+
+## 📌 Conclusion
+
+The LP model effectively allocates materials to maximize profitability. The result shows that it’s not optimal to produce Leaf, and instead focus entirely on Bloom and Amber, respecting all constraints.
+
+
+
